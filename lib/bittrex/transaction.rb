@@ -1,6 +1,6 @@
 module Bittrex
   class Transaction
-    attr_reader :market, :type, :quantity, :uuid, :fulfilled :raw
+    attr_reader :market, :type, :quantity, :uuid, :fulfilled, :raw
 
     def initialize(type, market, quantity, rate, attrs = {})
       @market = market
@@ -19,7 +19,7 @@ module Bittrex
     end
 
     def self.buy_limit(market, quantity, rate)
-      new(:buy_limit, market, client.get('market/buylimit', market: market, quantity: quantity, rate: rate))      
+      new(:buy_limit, market, quantity, rate, client.get('market/buylimit', market: market, quantity: quantity, rate: rate))      
     end
 
     def self.sell_market(market, quantity)
@@ -27,7 +27,7 @@ module Bittrex
     end
 
     def self.sell_limit(market, quantity, rate)
-      new(:sell_limit, market, client.get('market/selllimit', market: market, quantity: quantity, rate: rate))      
+      new(:sell_limit, market, quantity, rate, client.get('market/selllimit', market: market, quantity: quantity, rate: rate))      
     end
 
     private

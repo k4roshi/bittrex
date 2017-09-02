@@ -23,7 +23,6 @@ module Bittrex
   end
 
   def self.configuration
-    puts "ASS"
     Configuration.instance
   end
 
