@@ -1,5 +1,5 @@
 module Bittrex
-  class Transaction
+  class Operation
     attr_reader :market, :type, :quantity, :uuid, :fulfilled, :raw
 
     def initialize(type, market, quantity, rate, attrs = {})
